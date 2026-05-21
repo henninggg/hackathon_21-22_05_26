@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.python-version.local
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_meta
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Hackathon — never commit API keys
+.env
+.env.local
+*.api_key
+.oriqx_key
+
+# Local-only logs
+*.log
+/.ruff_cache/
+
+# SDK local cache (never commit)
+uniqx_store.redb

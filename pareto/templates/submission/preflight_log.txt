@@ -1,0 +1,15 @@
+=== REPLACE: paste your options.summary() output here ===
+
+Example shape (do not submit this — submit yours):
+
++----------------+---------+------------+--------+-------------+
+| Option         | Time    | Cost (USD) | Error  | Carbon (g)  |
++----------------+---------+------------+--------+-------------+
+| cpu-only *     | 1240 tu | $0.0042    | 0.00%  | 3.210       |
+| cpu+gpu        |  430 tu | $0.0118    | 0.00%  | 4.870       |
+| cpu+gpu+qpu    |  210 tu | $0.0890    | 0.32%  | 2.140       |
++----------------+---------+------------+--------+-------------+
+
+If you ran several configurations to show how the frontier moves
+(strong move for Tradeoff Reasoning), include all of them, each with
+a one-line description.

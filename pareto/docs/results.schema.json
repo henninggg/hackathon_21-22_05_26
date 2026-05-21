@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/oriqx/pareto/docs/results.schema.json",
+  "title": "pareto hackathon submission results",
+  "type": "object",
+  "required": [
+    "team",
+    "members",
+    "track",
+    "preflight_choice",
+    "justification",
+    "metrics",
+    "baseline_comparison"
+  ],
+  "properties": {
+    "team":    { "type": "string", "minLength": 1 },
+    "members": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "track":   { "type": "string", "enum": ["dft", "cfd", "md", "custom"] },
+    "workload_description": { "type": "string" },
+    "preflight_choice":     { "type": "string", "minLength": 1 },
+    "justification":        { "type": "string", "minLength": 1 },
+    "metrics": {
+      "type": "object",
+      "required": ["runtime_s", "accuracy_rel_error", "cost_usd", "carbon_g", "problem_size"],
+      "properties": {
+        "runtime_s":          { "type": "number", "minimum": 0 },
+        "accuracy_rel_error": { "type": "number", "minimum": 0 },
+        "cost_usd":           { "type": "number", "minimum": 0 },
+        "carbon_g":           { "type": "number", "minimum": 0 },
+        "problem_size":       { "type": "number", "minimum": 0 }
+      }
+    },
+    "baseline_comparison": { "type": "string", "minLength": 1 },
+    "stretch": { "type": "string" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "track": { "const": "custom" } }, "required": ["track"] },
+      "then": { "required": ["workload_description"], "properties": { "workload_description": { "minLength": 1 } } }
+    }
+  ]
+}

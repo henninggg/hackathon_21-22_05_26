@@ -1,0 +1,7 @@
+numpy>=1.24
+scipy>=1.11
+matplotlib>=3.7
+
+# JAX backend — needed when config.BACKEND = "jax"
+jax>=0.4
+jaxlib>=0.4

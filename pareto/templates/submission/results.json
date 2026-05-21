@@ -1,0 +1,17 @@
+{
+  "team": "REPLACE — team name",
+  "members": ["REPLACE — name 1", "REPLACE — name 2"],
+  "track": "dft",
+  "workload_description": "",
+  "preflight_choice": "REPLACE — label from PreflightResult, e.g. cpu-only",
+  "justification": "REPLACE — 3-6 sentences referencing specific numbers from preflight().summary().",
+  "metrics": {
+    "runtime_s": 0.0,
+    "accuracy_rel_error": 0.0,
+    "cost_usd": 0.0,
+    "carbon_g": 0.0,
+    "problem_size": 0
+  },
+  "baseline_comparison": "REPLACE — describe baseline (PySCF / NumPy / custom) and what was compared.",
+  "stretch": ""
+}
