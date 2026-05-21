@@ -1,0 +1,2 @@
+commit	pareto_score	cost_usd	time_s	error_rate	hw_choice	status	description
+4beacd4	0.001643	0.000000	125038.40	0.000000	mixed(cpu-only/cpu+sim)	keep	baseline — recommended hw: cpu-only for small dims, cpu+sim(cuquantum) for larger dims

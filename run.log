@@ -1,0 +1,28 @@
+{"timestamp": "2026-05-21T20:31:32+0200", "level": "ERROR", "component": "sdk", "subcomponent": "execution", "file": "/Users/alessandro/Documents/hackathon_21-22_05_26/venv/lib/python3.14/site-packages/uniqx/core/execution.py", "line": 1463, "message": "job failed: unknown error", "job_id": "ba3ba8f8-a7d9-49f9-a87a-89cd6be2668b"}
+{"timestamp": "2026-05-21T20:31:33+0200", "level": "ERROR", "component": "sdk", "subcomponent": "execution", "file": "/Users/alessandro/Documents/hackathon_21-22_05_26/venv/lib/python3.14/site-packages/uniqx/core/execution.py", "line": 1463, "message": "job failed: unknown error", "job_id": "502ab7d9-f541-45e7-a592-2dd9ef42cd63"}
+{"timestamp": "2026-05-21T20:31:36+0200", "level": "ERROR", "component": "sdk", "subcomponent": "execution", "file": "/Users/alessandro/Documents/hackathon_21-22_05_26/venv/lib/python3.14/site-packages/uniqx/core/execution.py", "line": 1463, "message": "job failed: unknown error", "job_id": "66100bf5-f8fe-40a3-9f37-a6c0fb7dbeab"}
+{"timestamp": "2026-05-21T20:31:36+0200", "level": "ERROR", "component": "sdk", "subcomponent": "execution", "file": "/Users/alessandro/Documents/hackathon_21-22_05_26/venv/lib/python3.14/site-packages/uniqx/core/execution.py", "line": 1463, "message": "job failed: unknown error", "job_id": "49950737-0562-412e-8ead-adcf402068f2"}
+{"timestamp": "2026-05-21T20:31:40+0200", "level": "ERROR", "component": "sdk", "subcomponent": "execution", "file": "/Users/alessandro/Documents/hackathon_21-22_05_26/venv/lib/python3.14/site-packages/uniqx/core/execution.py", "line": 1463, "message": "job failed: unknown error", "job_id": "fecc7e5b-ed0d-4580-95e4-c1ed1b9703a4"}
+{"timestamp": "2026-05-21T20:31:41+0200", "level": "ERROR", "component": "sdk", "subcomponent": "execution", "file": "/Users/alessandro/Documents/hackathon_21-22_05_26/venv/lib/python3.14/site-packages/uniqx/core/execution.py", "line": 1463, "message": "job failed: unknown error", "job_id": "af5445d2-16a9-4db0-afda-732a670819dd"}
+  WARNING: job ba3ba8f8-a7d9-49f9-a87a-89cd6be2668b failed: job ba3ba8f8-a7d9-49f9-a87a-89cd6be2668b failed: unknown error — using preflight estimates only
+  WARNING: job 502ab7d9-f541-45e7-a592-2dd9ef42cd63 failed: job 502ab7d9-f541-45e7-a592-2dd9ef42cd63 failed: unknown error — using preflight estimates only
+  WARNING: job 66100bf5-f8fe-40a3-9f37-a6c0fb7dbeab failed: job 66100bf5-f8fe-40a3-9f37-a6c0fb7dbeab failed: unknown error — using preflight estimates only
+  WARNING: job 49950737-0562-412e-8ead-adcf402068f2 failed: job 49950737-0562-412e-8ead-adcf402068f2 failed: unknown error — using preflight estimates only
+  WARNING: job fecc7e5b-ed0d-4580-95e4-c1ed1b9703a4 failed: job fecc7e5b-ed0d-4580-95e4-c1ed1b9703a4 failed: unknown error — using preflight estimates only
+  WARNING: job af5445d2-16a9-4db0-afda-732a670819dd failed: job af5445d2-16a9-4db0-afda-732a670819dd failed: unknown error — using preflight estimates only
+---
+pareto_score:     0.001643
+num_workloads:    10
+mean_cost_usd:    0.000000
+mean_time_s:      125038.40
+mean_error_rate:  0.000000
+  period_finding N=15 dim=  15  hw=cpu-only        time=  1594.0  cost=$0.0000  err=0.0000  score=0.000003
+  period_finding N=21 dim=  21  hw=cpu+sim(cuquantum)time=  2896.8  cost=$0.0000  err=0.0000  score=0.000001
+  period_finding N=35 dim=  35  hw=cpu+sim(cuquantum)time=  6789.0  cost=$0.0000  err=0.0000  score=0.000009
+  lattice       dim=   4        hw=cpu-only        time=  1184.0  cost=$0.0000  err=0.0000  score=0.000001
+  lattice       dim=   8        hw=cpu-only        time=126030.1  cost=$0.0000  err=0.0000  score=0.015883
+  lattice       dim=  12        hw=cpu+sim(cuquantum)time=318663.0  cost=$0.0000  err=0.0000  score=0.000134
+  lattice       dim=  16        hw=cpu+sim(cuquantum)time=786633.0  cost=$0.0000  err=0.0000  score=0.000399
+  discrete_log  g=2 p=13        hw=cpu-only        time=  1200.0  cost=$0.0000  err=0.0000  score=0.000001
+  discrete_log  g=3 p=17        hw=cpu+sim(cuquantum)time=  2014.2  cost=$0.0000  err=0.0000  score=0.000001
+  discrete_log  g=2 p=23        hw=cpu+sim(cuquantum)time=  3379.8  cost=$0.0000  err=0.0000  score=0.000002
