@@ -251,6 +251,16 @@ def run_single_experiment(workload_type, params, strategy_id, enabled_strategies
         # 2. Preflight options scoring
         try:
             opts = preflight(mod, client=client)
+            # Apply our local strategy multipliers to the live preflight options!
+            from optimization_config import get_multipliers
+            lat_mult, cost_mult, err_mult = get_multipliers()
+            for o in opts:
+                if isinstance(o, dict):
+                    o["total_time"] = float(o.get("total_time", 0.0)) * lat_mult
+                    o["total_cost_usd"] = float(o.get("total_cost_usd", 0.0)) * cost_mult
+                    if "total_carbon_g" in o:
+                        o["total_carbon_g"] = float(o.get("total_carbon_g", 0.0)) * cost_mult
+                    o["max_error_rate"] = float(o.get("max_error_rate", 0.0)) * err_mult
         except Exception as preflight_err:
             if RUN_ONLINE:
                 print(f"      [Gateway Warning] Preflight failed: {preflight_err}")
