@@ -1,0 +1,3 @@
+[submodule "pareto"]
+	path = pareto
+	url = https://github.com/oriqx/pareto.git
