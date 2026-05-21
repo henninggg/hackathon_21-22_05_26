@@ -2,3 +2,6 @@
 	path = pareto
 	url = https://github.com/oriqx/pareto.git
 venv
+[submodule "pixel-perfect-clone-78177"]
+	path = pixel-perfect-clone-78177
+	url = https://github.com/henninggg/pixel-perfect-clone-78177.git
