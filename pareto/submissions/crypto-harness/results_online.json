@@ -1,0 +1,1069 @@
+{
+  "experiment_metadata": {
+    "harness_version": "1.0.0",
+    "timestamp": "2026-05-21T19:12:40.374686Z",
+    "environment": {
+      "python_version": "3.11.0",
+      "uniqx_version": "0.2.6",
+      "platform": "win32"
+    }
+  },
+  "baseline_comparison": {
+    "description": "Default recommended preflight options per workload size with classical routing.",
+    "reference": "recommended option from PreflightResult"
+  },
+  "results": [
+    {
+      "strategy_id": "BASELINE",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 15,
+        "a": 7
+      },
+      "latency": 103.6,
+      "wall_time": 3.5780000000959262,
+      "cost_usd": 4.77e-10,
+      "carbon_g": 0.04000000318,
+      "error_rate": 1e-07,
+      "job_id": "01e70e3f-6a09-4355-a152-6672cb36bca7",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 15,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate",
+      "improvement_vs_baseline": {
+        "latency_reduction_pct": 0.0,
+        "cost_change_pct": 0.0,
+        "tradeoff_notes": "Selected option block-qpu-accurate over recommended block-qpu-accurate resulting in a 0.0% reduction in latency. Cost change was +0.0%. Carbon output is 0.040g CO2."
+      }
+    },
+    {
+      "strategy_id": "BASELINE",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 21,
+        "a": 2
+      },
+      "latency": 197.99999999999997,
+      "wall_time": 2.922000000020489,
+      "cost_usd": 9.324e-10,
+      "carbon_g": 0.040000006216,
+      "error_rate": 1e-07,
+      "job_id": "1c014b89-700c-4d94-a1f5-09308167c2da",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 21,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate",
+      "improvement_vs_baseline": {
+        "latency_reduction_pct": 0.0,
+        "cost_change_pct": 0.0,
+        "tradeoff_notes": "Selected option block-qpu-accurate over recommended block-qpu-accurate resulting in a 0.0% reduction in latency. Cost change was +0.0%. Carbon output is 0.040g CO2."
+      }
+    },
+    {
+      "strategy_id": "BASELINE",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 33,
+        "a": 2
+      },
+      "latency": 480.4000000000001,
+      "wall_time": 5.702999999979511,
+      "cost_usd": 2.2967999999999998e-09,
+      "carbon_g": 0.040000015312,
+      "error_rate": 1e-07,
+      "job_id": "c80de1bc-e630-4aac-9c8a-197e7e1cb4d0",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 33,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate",
+      "improvement_vs_baseline": {
+        "latency_reduction_pct": 0.0,
+        "cost_change_pct": 0.0,
+        "tradeoff_notes": "Selected option block-qpu-accurate over recommended block-qpu-accurate resulting in a 0.0% reduction in latency. Cost change was +0.0%. Carbon output is 0.040g CO2."
+      }
+    },
+    {
+      "strategy_id": "BASELINE",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 18.03200000000652,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "30b76f3f-b902-4258-aba3-3d44af894a2d",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate",
+      "improvement_vs_baseline": {
+        "latency_reduction_pct": 0.0,
+        "cost_change_pct": 0.0,
+        "tradeoff_notes": "Selected option block-qpu-accurate over recommended block-qpu-accurate resulting in a 0.0% reduction in latency. Cost change was +0.0%. Carbon output is 0.040g CO2."
+      }
+    },
+    {
+      "strategy_id": "BASELINE",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 55,
+        "a": 2
+      },
+      "latency": 1322.2666666666669,
+      "wall_time": 6.172000000020489,
+      "cost_usd": 6.368999999999999e-09,
+      "carbon_g": 0.04000004246,
+      "error_rate": 1e-07,
+      "job_id": "d1c047b0-ff43-4411-ada3-a0fe21fa32a6",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 55,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate",
+      "improvement_vs_baseline": {
+        "latency_reduction_pct": 0.0,
+        "cost_change_pct": 0.0,
+        "tradeoff_notes": "Selected option block-qpu-accurate over recommended block-qpu-accurate resulting in a 0.0% reduction in latency. Cost change was +0.0%. Carbon output is 0.040g CO2."
+      }
+    },
+    {
+      "strategy_id": "BASELINE",
+      "workload_type": "lattice",
+      "params": {
+        "dim": 4
+      },
+      "latency": 42.034666666666666,
+      "wall_time": 3.1089999999385327,
+      "cost_usd": 3.54912e-10,
+      "carbon_g": 0.01000000236608,
+      "error_rate": 1e-07,
+      "job_id": "d6ba171b-f978-49aa-92bc-a7618963da81",
+      "option_label": "cpu+gpu",
+      "dim": 4,
+      "status": "success",
+      "recommended_was": "cpu+gpu",
+      "improvement_vs_baseline": {
+        "latency_reduction_pct": 0.0,
+        "cost_change_pct": 0.0,
+        "tradeoff_notes": "Routing optimized for lattice dim=4. Latency reduced by 0.0%. Cost change: +0.0%. Carbon output: 0.010g CO2."
+      }
+    },
+    {
+      "strategy_id": "BASELINE",
+      "workload_type": "lattice",
+      "params": {
+        "dim": 8
+      },
+      "latency": 4208.370666666667,
+      "wall_time": 3.344000000040978,
+      "cost_usd": 3.7808736e-08,
+      "carbon_g": 0.01000025205824,
+      "error_rate": 1e-07,
+      "job_id": "849f98dc-66f4-4629-b28e-ebc00c6c05b6",
+      "option_label": "cpu+gpu",
+      "dim": 8,
+      "status": "success",
+      "recommended_was": "cpu+gpu",
+      "improvement_vs_baseline": {
+        "latency_reduction_pct": 0.0,
+        "cost_change_pct": 0.0,
+        "tradeoff_notes": "Routing optimized for lattice dim=8. Latency reduced by 0.0%. Cost change: +0.0%. Carbon output: 0.010g CO2."
+      }
+    },
+    {
+      "strategy_id": "BASELINE",
+      "workload_type": "lattice",
+      "params": {
+        "dim": 12
+      },
+      "status": "error",
+      "error": "job a56c4ed6-a570-4cf5-b8d3-15c0cc2628fe failed: unknown error",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\conte\\.gemini\\antigravity\\scratch\\pareto-harness\\run_experiment.py\", line 267, in run_single_experiment\n    res = get(jid, client=client)\n          ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\conte\\.gemini\\antigravity\\scratch\\pareto\\.venv\\Lib\\site-packages\\uniqx\\core\\execution.py\", line 1495, in get\n    raise UniqxJobFailedError(\nuniqx.core.errors.UniqxJobFailedError: job 343afd42-17de-4b8a-b27b-9c2849c0aa12 failed: unknown error\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\conte\\.gemini\\antigravity\\scratch\\pareto-harness\\run_experiment.py\", line 285, in run_single_experiment\n    res = get(jid, client=client)\n          ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\conte\\.gemini\\antigravity\\scratch\\pareto\\.venv\\Lib\\site-packages\\uniqx\\core\\execution.py\", line 1495, in get\n    raise UniqxJobFailedError(\nuniqx.core.errors.UniqxJobFailedError: job a56c4ed6-a570-4cf5-b8d3-15c0cc2628fe failed: unknown error\n",
+      "job_id": "err_264c8fe3-f457-4e79-b221-321b82503545"
+    },
+    {
+      "strategy_id": "BASELINE",
+      "workload_type": "lattice",
+      "params": {
+        "dim": 16
+      },
+      "status": "error",
+      "error": "job 951123ba-89b2-4402-b6e3-6c38e4ed504d failed: unknown error",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\conte\\.gemini\\antigravity\\scratch\\pareto-harness\\run_experiment.py\", line 267, in run_single_experiment\n    res = get(jid, client=client)\n          ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\conte\\.gemini\\antigravity\\scratch\\pareto\\.venv\\Lib\\site-packages\\uniqx\\core\\execution.py\", line 1495, in get\n    raise UniqxJobFailedError(\nuniqx.core.errors.UniqxJobFailedError: job 28fb2729-c81a-456c-a681-6d98bb2e4b43 failed: unknown error\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\conte\\.gemini\\antigravity\\scratch\\pareto-harness\\run_experiment.py\", line 285, in run_single_experiment\n    res = get(jid, client=client)\n          ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\conte\\.gemini\\antigravity\\scratch\\pareto\\.venv\\Lib\\site-packages\\uniqx\\core\\execution.py\", line 1495, in get\n    raise UniqxJobFailedError(\nuniqx.core.errors.UniqxJobFailedError: job 951123ba-89b2-4402-b6e3-6c38e4ed504d failed: unknown error\n",
+      "job_id": "err_ef879429-a37e-4e3c-9370-5c0b6edde6fa"
+    },
+    {
+      "strategy_id": "BASELINE",
+      "workload_type": "discrete_log",
+      "params": {
+        "g": 2,
+        "p": 13
+      },
+      "latency": 79.06666666666666,
+      "wall_time": 3.4380000000819564,
+      "cost_usd": 3.588e-10,
+      "carbon_g": 0.040000002392,
+      "error_rate": 1e-07,
+      "job_id": "1b49a26c-be89-42c5-a3a4-8fe9b77412da",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 13,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate",
+      "improvement_vs_baseline": {
+        "latency_reduction_pct": 0.0,
+        "cost_change_pct": 0.0,
+        "tradeoff_notes": "Discrete logarithm routing optimized at p=13. Latency reduced by 0.0%. Cost change: +0.0%. Carbon output: 0.040g CO2."
+      }
+    },
+    {
+      "strategy_id": "BASELINE",
+      "workload_type": "discrete_log",
+      "params": {
+        "g": 3,
+        "p": 17
+      },
+      "latency": 131.6,
+      "wall_time": 20.969000000040978,
+      "cost_usd": 6.120000000000001e-10,
+      "carbon_g": 0.040000004080000005,
+      "error_rate": 1e-07,
+      "job_id": "4b055165-5c22-49cc-a0ff-0215e4440224",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 17,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate",
+      "improvement_vs_baseline": {
+        "latency_reduction_pct": 0.0,
+        "cost_change_pct": 0.0,
+        "tradeoff_notes": "Discrete logarithm routing optimized at p=17. Latency reduced by 0.0%. Cost change: +0.0%. Carbon output: 0.040g CO2."
+      }
+    },
+    {
+      "strategy_id": "BASELINE",
+      "workload_type": "discrete_log",
+      "params": {
+        "g": 2,
+        "p": 23
+      },
+      "latency": 236.4,
+      "wall_time": 6.35999999998603,
+      "cost_usd": 1.1177999999999998e-09,
+      "carbon_g": 0.040000007452,
+      "error_rate": 1e-07,
+      "job_id": "67c97251-e53d-4c70-93ac-064269b9d974",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 23,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate",
+      "improvement_vs_baseline": {
+        "latency_reduction_pct": 0.0,
+        "cost_change_pct": 0.0,
+        "tradeoff_notes": "Discrete logarithm routing optimized at p=23. Latency reduced by 0.0%. Cost change: +0.0%. Carbon output: 0.040g CO2."
+      }
+    },
+    {
+      "strategy_id": "OP-01",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 3.0320000000065193,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "8d7788fa-a67f-4b4b-bbb1-94a1e8646474",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-09",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 3.327999999979511,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "7c6db9c3-5883-4c62-901a-96eb0ca4474e",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-10",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 3.125,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "5a403bbf-1cc4-48f2-85b6-34774a6cc7ba",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-14",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 7.452999999979511,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "84b752b9-773c-4f2f-9c8c-ba745f7eacf5",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-15",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 4.875,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "0eedb524-eae3-4cfd-a57e-7016f186ed90",
+      "option_label": "cpu+gpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-19",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 3.5790000000270084,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "f41c8741-e256-4ee4-97dd-d315dd2b6d77",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-20",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 2.937999999965541,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "7c36833d-001e-4273-b352-dc153b29fa32",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-21",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 16.015999999945052,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "1a5dfdf9-af4b-49d4-bab5-50929b17f328",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-22",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 8614.0,
+      "wall_time": 0.48400000005494803,
+      "cost_usd": 8.61e-09,
+      "carbon_g": 4.305e-09,
+      "error_rate": 1e-15,
+      "job_id": "425037a4-427b-44c0-9a61-fc41ebbd38f3",
+      "option_label": "cpu-only",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-23",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 3.2030000000959262,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "48e4960d-1a14-490a-9e75-ac9d29a0d7e9",
+      "option_label": "cpu+gpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-24",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 2.952999999979511,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "ed9f9fc5-d76c-423e-91de-36a0c29d86dc",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-16",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 8614.0,
+      "wall_time": 0.2809999999590218,
+      "cost_usd": 8.61e-09,
+      "carbon_g": 4.305e-09,
+      "error_rate": 1e-15,
+      "job_id": "81fd2aeb-fc61-497e-affb-a653e5c0e3ba",
+      "option_label": "cpu-only",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-02",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 3.155999999959022,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "18942b10-9282-45d5-86eb-74011bd7a457",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-03",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "status": "error",
+      "error": "job f8b5e1ba-b160-4340-bfde-9f18a2817c49 failed: unknown error",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\conte\\.gemini\\antigravity\\scratch\\pareto-harness\\run_experiment.py\", line 267, in run_single_experiment\n    res = get(jid, client=client)\n          ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\conte\\.gemini\\antigravity\\scratch\\pareto\\.venv\\Lib\\site-packages\\uniqx\\core\\execution.py\", line 1495, in get\n    raise UniqxJobFailedError(\nuniqx.core.errors.UniqxJobFailedError: job 839955a2-7290-4fad-bf59-18a6abd3c500 failed: unknown error\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\conte\\.gemini\\antigravity\\scratch\\pareto-harness\\run_experiment.py\", line 285, in run_single_experiment\n    res = get(jid, client=client)\n          ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\conte\\.gemini\\antigravity\\scratch\\pareto\\.venv\\Lib\\site-packages\\uniqx\\core\\execution.py\", line 1495, in get\n    raise UniqxJobFailedError(\nuniqx.core.errors.UniqxJobFailedError: job f8b5e1ba-b160-4340-bfde-9f18a2817c49 failed: unknown error\n",
+      "job_id": "err_c909f9a1-1b1c-4efc-92ae-d576d3f2e2f0"
+    },
+    {
+      "strategy_id": "OP-04",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 14.719000000040978,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "4fc4ddfd-3855-4b1c-b734-7a3d2d169e75",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-05",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 3.562000000034459,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "16ba0c09-8d71-49e7-8b3b-5e39134f1f2d",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-07",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 3.7030000000959262,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "ecf2ad55-5f7b-4a58-b0d2-7a3ea498fc8f",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-12",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 3.577999999979511,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "2b8b666d-05ef-4be3-9766-e189679fd73f",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-43",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 25.563000000081956,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "ab267899-76f8-4e2d-a315-28b62062207b",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-11",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 4.062000000034459,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "fd90b614-728d-495c-bebf-465847773b5c",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-06",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 4.657000000006519,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "a3b621c8-fecc-4ec6-85f7-89c792d09cdb",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-08",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 3.202999999979511,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "a269e40e-c7b5-4346-b3b4-ac561d0ef1cf",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-13",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 26.125,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "2e17342f-cdd6-4a95-9d74-8218aff40328",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-17",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 3.75,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "7cfdb473-c6d0-4b52-907b-e3e1ae725c10",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-28",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 30.03200000000652,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "320effb8-91e7-4a3a-83f1-a88faea14e5f",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-29",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 4.094000000040978,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "f215311f-c691-4a2d-ab76-a3fe02ef1e9c",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-30",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 16.45299999997951,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "148c7376-fbf2-4ae3-af56-5f5d4a584ce2",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-31",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 16.79700000002049,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "efc08273-3796-4632-84ef-65e0ea9b7314",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-25",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 8614.0,
+      "wall_time": 0.515999999945052,
+      "cost_usd": 8.61e-09,
+      "carbon_g": 4.305e-09,
+      "error_rate": 1e-15,
+      "job_id": "47e24ff4-bb33-471a-99d8-f6af1225c8e5",
+      "option_label": "cpu-only",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-26",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 15.530999999959022,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "85c2ece1-f88b-4a25-9372-3a7815e267e5",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-27",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "status": "error",
+      "error": "job 4817c4f0-8c6c-41e8-bd23-c5ef5b9f0aa9 failed: unknown error",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\conte\\.gemini\\antigravity\\scratch\\pareto-harness\\run_experiment.py\", line 267, in run_single_experiment\n    res = get(jid, client=client)\n          ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\conte\\.gemini\\antigravity\\scratch\\pareto\\.venv\\Lib\\site-packages\\uniqx\\core\\execution.py\", line 1495, in get\n    raise UniqxJobFailedError(\nuniqx.core.errors.UniqxJobFailedError: job 470350ae-09cb-4b5d-aa7a-9259f2310103 failed: unknown error\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\conte\\.gemini\\antigravity\\scratch\\pareto-harness\\run_experiment.py\", line 285, in run_single_experiment\n    res = get(jid, client=client)\n          ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\conte\\.gemini\\antigravity\\scratch\\pareto\\.venv\\Lib\\site-packages\\uniqx\\core\\execution.py\", line 1495, in get\n    raise UniqxJobFailedError(\nuniqx.core.errors.UniqxJobFailedError: job 4817c4f0-8c6c-41e8-bd23-c5ef5b9f0aa9 failed: unknown error\n",
+      "job_id": "err_36d717b5-aa69-4e80-b5bd-fd1e4be0541a"
+    },
+    {
+      "strategy_id": "OP-32",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 13.84299999999348,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "fc73ac18-14e2-47a8-9f54-793d7c82216f",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-41",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 17.718999999924563,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "455dfb82-bb9a-4340-8c27-5961b97b90d0",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-44",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 14.562999999965541,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "ed6b0a0c-25bd-4a6c-bdce-ee3b0dc524a8",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-18",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 28.188000000081956,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "b2204908-7128-41f0-9c17-cc67bfa2c177",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-35",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 33.06299999996554,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "73547404-be31-4d8d-8b75-4690ce9a80a8",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-33",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 40.828000000095926,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "a8d657b3-f063-455f-a88c-4901d55374e8",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-34",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 39.04700000002049,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "b27ffeef-d37b-4034-acd5-4bc24ca98da1",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-36",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 3.625,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "d78e2fa6-5d25-4175-b076-ee9a5e39bbcd",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-37",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 29.79700000002049,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "27b495e4-4299-4bb9-acbe-77b7b62909da",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-38",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 3.75,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "25af35b4-80da-4183-add9-d03a9dbff078",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-39",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 31.953000000095926,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "6d1c0cd1-874c-4b64-9169-2777a1b6c30e",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-40",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 3.375,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "00b9fc8e-30c0-41e4-821b-6625898e5dee",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "OP-42",
+      "workload_type": "period_finding",
+      "params": {
+        "N": 35,
+        "a": 2
+      },
+      "latency": 539.6,
+      "wall_time": 40.546999999904074,
+      "cost_usd": 2.5829999999999995e-09,
+      "carbon_g": 0.04000001722,
+      "error_rate": 1e-07,
+      "job_id": "dea9f7a5-18b5-45bf-8a86-94302e6d22ae",
+      "option_label": "cpu+gpu+qpu",
+      "dim": 35,
+      "status": "success",
+      "recommended_was": "block-qpu-accurate"
+    },
+    {
+      "strategy_id": "BASELINE",
+      "workload_type": "lattice",
+      "params": {
+        "dim": 12
+      },
+      "status": "error",
+      "error": "job 953592a4-2f18-4015-baa1-1464ecfafdd8 failed: unknown error",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\conte\\.gemini\\antigravity\\scratch\\pareto-harness\\run_experiment.py\", line 267, in run_single_experiment\n    res = get(jid, client=client)\n          ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\conte\\.gemini\\antigravity\\scratch\\pareto\\.venv\\Lib\\site-packages\\uniqx\\core\\execution.py\", line 1495, in get\n    raise UniqxJobFailedError(\nuniqx.core.errors.UniqxJobFailedError: job 6d1b4bbe-d4d8-486b-b6e4-416efe2e88e0 failed: unknown error\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\conte\\.gemini\\antigravity\\scratch\\pareto-harness\\run_experiment.py\", line 285, in run_single_experiment\n    res = get(jid, client=client)\n          ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\conte\\.gemini\\antigravity\\scratch\\pareto\\.venv\\Lib\\site-packages\\uniqx\\core\\execution.py\", line 1495, in get\n    raise UniqxJobFailedError(\nuniqx.core.errors.UniqxJobFailedError: job 953592a4-2f18-4015-baa1-1464ecfafdd8 failed: unknown error\n",
+      "job_id": "err_624a6db0-7bd6-422f-9ad0-29837164a1c6"
+    },
+    {
+      "strategy_id": "BASELINE",
+      "workload_type": "lattice",
+      "params": {
+        "dim": 16
+      },
+      "status": "error",
+      "error": "job 052b7b54-0f35-48b2-a88f-41c1d2a587ab failed: unknown error",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\conte\\.gemini\\antigravity\\scratch\\pareto-harness\\run_experiment.py\", line 267, in run_single_experiment\n    res = get(jid, client=client)\n          ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\conte\\.gemini\\antigravity\\scratch\\pareto\\.venv\\Lib\\site-packages\\uniqx\\core\\execution.py\", line 1495, in get\n    raise UniqxJobFailedError(\nuniqx.core.errors.UniqxJobFailedError: job 6caeb2da-c647-45fb-a832-27104ef2bf5d failed: unknown error\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\conte\\.gemini\\antigravity\\scratch\\pareto-harness\\run_experiment.py\", line 285, in run_single_experiment\n    res = get(jid, client=client)\n          ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\conte\\.gemini\\antigravity\\scratch\\pareto\\.venv\\Lib\\site-packages\\uniqx\\core\\execution.py\", line 1495, in get\n    raise UniqxJobFailedError(\nuniqx.core.errors.UniqxJobFailedError: job 052b7b54-0f35-48b2-a88f-41c1d2a587ab failed: unknown error\n",
+      "job_id": "err_47599762-005b-4a18-8109-ba8d7f546862"
+    }
+  ]
+}

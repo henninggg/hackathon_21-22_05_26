@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Pareto Harness Experiment Results",
+  "description": "Schema for quantum workload optimization experiment results",
+  "type": "object",
+  "required": ["experiment_metadata", "baseline_comparison", "results"],
+  "properties": {
+    "experiment_metadata": {
+      "type": "object",
+      "required": ["harness_version", "timestamp", "environment"],
+      "properties": {
+        "harness_version": {"type": "string"},
+        "timestamp": {"type": "string", "format": "date-time"},
+        "environment": {
+          "type": "object",
+          "properties": {
+            "python_version": {"type": "string"},
+            "uniqx_version": {"type": "string"},
+            "platform": {"type": "string"}
+          }
+        }
+      }
+    },
+    "baseline_comparison": {
+      "type": "object",
+      "required": ["description", "reference"],
+      "properties": {
+        "description": {"type": "string"},
+        "reference": {"type": "string"}
+      }
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["strategy_id", "job_id", "status"],
+        "properties": {
+          "strategy_id": {"type": "string", "description": "Strategy identifier (e.g. OP-01) or BASELINE"},
+          "workload_type": {"type": "string", "enum": ["period_finding", "lattice", "discrete_log"]},
+          "params": {"type": "object"},
+          "latency": {"type": "number", "minimum": 0, "description": "Predicted execution time from preflight in seconds"},
+          "wall_time": {"type": "number", "minimum": 0, "description": "Measured wall-clock time in seconds"},
+          "cost_usd": {"type": "number", "minimum": 0},
+          "carbon_g": {"type": "number", "minimum": 0, "description": "Estimated carbon in grams"},
+          "error_rate": {"type": "number", "minimum": 0, "maximum": 1},
+          "job_id": {"type": "string"},
+          "option_label": {"type": "string", "enum": ["cpu-only", "cpu+gpu", "cpu+gpu+qpu"]},
+          "dim": {"type": ["integer", "null"]},
+          "status": {"type": "string", "enum": ["success", "error", "skipped"]},
+          "error": {"type": "string"},
+          "traceback": {"type": "string"},
+          "recommended_was": {"type": "string"},
+          "improvement_vs_baseline": {
+            "type": "object",
+            "properties": {
+              "latency_reduction_pct": {"type": "number"},
+              "cost_change_pct": {"type": "number"},
+              "tradeoff_notes": {"type": "string"}
+            }
+          }
+        }
+      }
+    }
+  }
+}
