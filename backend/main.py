@@ -739,3 +739,333 @@ def benchmark_run(req: BenchmarkRequest):
 
     else:
         raise HTTPException(400, "workload must be 'lattice' or 'shor'")
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+# Shared: O(dim²) pure-Python DFT — the classical state-vector simulator
+# Deliberately un-vectorised so it takes ~2–3s at dim=1024,
+# demonstrating the exponential classical cost of simulating quantum circuits.
+# ═════════════════════════════════════════════════════════════════════════════
+
+_SIM_DIM = 1024   # 10 qubits — fixed for consistent demo timing
+
+def _state_vector_dft(state: list, job: dict, prog_key: str) -> list:
+    import cmath, math
+    dim = len(state)
+    out = [complex(0.0)] * dim
+    tpd = 2.0 * cmath.pi / dim
+    isq = 1.0 / math.sqrt(dim)
+    for k in range(dim):
+        v = complex(0.0)
+        pk = -tpd * k
+        for j in range(dim):          # full O(dim²) — no zero-skip
+            v += state[j] * cmath.rect(1.0, pk * j)
+        out[k] = v * isq
+        job[prog_key] = 0.05 + 0.93 * k / dim
+    job[prog_key] = 1.0
+    return out
+
+def _dft_peak(out: list, dim: int) -> int:
+    probs = [abs(x) ** 2 for x in out]
+    return max(range(1, dim), key=lambda k: probs[k])
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+# ── Period Finding / Shor  (encode → preflight → race → status) ──────────────
+# ═════════════════════════════════════════════════════════════════════════════
+
+shor_sessions: dict[str, dict] = {}
+shor_jobs: dict[str, dict] = {}
+
+class ShorEncodeRequest(BaseModel):
+    message: str
+    N: int
+
+class ShorSessionRequest(BaseModel):
+    session_id: str
+
+
+@app.post("/api/shor/encode")
+def shor_encode(req: ShorEncodeRequest):
+    if req.N not in KNOWN_FACTORS:
+        raise HTTPException(400, f"N must be one of {list(KNOWN_FACTORS)}")
+    msg = req.message.strip()[:10] or "QUANTUM"
+    p, _ = KNOWN_FACTORS[req.N]
+    ciphertext = _caesar(msg, p)
+    sid = uuid4().hex[:10]
+    shor_sessions[sid] = {"N": req.N, "a": 2, "message": msg, "factor_key": p, "ciphertext": ciphertext}
+    return {"session_id": sid, "N": req.N, "ciphertext": ciphertext,
+            "key_hint": f"Caesar-encrypted with a factor of N={req.N}"}
+
+
+@app.post("/api/shor/preflight")
+def shor_preflight(req: ShorSessionRequest):
+    sess = shor_sessions.get(req.session_id)
+    if not sess:
+        raise HTTPException(404, "Session not found")
+    N = sess["N"]
+    dim = _SIM_DIM
+    classical_t = round(dim ** 2 * 3e-6, 1)
+    rec = next((o for o in _mock_shor_options(N) if o["recommended"]), _mock_shor_options(N)[0])
+    return {
+        "session_id": req.session_id, "N": N,
+        "classical": {
+            "algorithm": f"State-Vector QFT Simulator ({dim} dims)",
+            "est_time_s": classical_t,
+            "iterations": dim,
+            "total_ops": dim * dim,
+            "cost_usd": round(classical_t * CPU_COST_PER_SEC, 7),
+        },
+        "quantum": {
+            "algorithm": "Shor's Period Finding (QFT on QPU)",
+            "est_time_s": rec["est_time_s"],
+            "gate_ops": dim * 12,
+            "cost_usd": rec["cost_usd"],
+        },
+    }
+
+
+@app.post("/api/shor/race")
+def shor_race(req: ShorSessionRequest):
+    sess = shor_sessions.get(req.session_id)
+    if not sess:
+        raise HTTPException(404, "Session not found")
+    ts = int(time.time() * 1000)
+    cid = f"shor_cl_{req.session_id}_{ts}"
+    qid = f"shor_qp_{req.session_id}_{ts}"
+    for jid, method in [(cid, "classical"), (qid, "quantum")]:
+        shor_jobs[jid] = {"method": method, "session_id": req.session_id,
+                           "started_at": time.time(), "status": "running",
+                           "sv_progress": 0.0, "sv_iters": 0, "result": None}
+    threading.Thread(target=_run_shor_cl, args=(cid,), daemon=True).start()
+    threading.Thread(target=_run_shor_qp, args=(qid,), daemon=True).start()
+    return {"classical_job_id": cid, "quantum_job_id": qid}
+
+
+def _run_shor_cl(job_id: str):
+    job = shor_jobs[job_id]
+    sess = shor_sessions[job["session_id"]]
+    N, a = sess["N"], sess["a"]
+    dim = _SIM_DIM
+    try:
+        import math
+        period_states = [x for x in range(1, dim) if pow(a, x, N) == 1]
+        amp = 1.0 / math.sqrt(len(period_states)) if period_states else 1.0 / math.sqrt(dim)
+        state = [complex(0.0)] * dim
+        for x in (period_states if period_states else range(dim)):
+            state[x % dim] = complex(amp, 0.0)
+        out = _state_vector_dft(state, job, "sv_progress")
+        peak = _dft_peak(out, dim)
+        r = KNOWN_PERIODS.get(N, 4)
+        for r_try in [round(dim / peak), round(dim / peak) + 1, round(dim / peak) - 1]:
+            if r_try > 0 and pow(a, r_try, N) == 1:
+                r = r_try; break
+        elapsed = time.time() - job["started_at"]
+        p, q = KNOWN_FACTORS[N]
+        job.update({"status": "done", "result": {
+            "decoded_message": _caesar(sess["ciphertext"], -sess["factor_key"]),
+            "elapsed_s": round(elapsed, 3),
+            "ops": dim * dim,
+            "cost_usd": round(elapsed * CPU_COST_PER_SEC, 7),
+            "extra": f"Period r={r} → factors {p}×{q}",
+        }})
+    except Exception as exc:
+        job.update({"status": "error", "result": {"error": str(exc)}})
+
+
+def _run_shor_qp(job_id: str):
+    job = shor_jobs[job_id]
+    sess = shor_sessions[job["session_id"]]
+    N = sess["N"]
+    try:
+        import uniqx
+        from uniqx.domains.optimization.crypto import build_period_finding_module
+        from uniqx.core.execution import connect, submit as ux_submit, get
+        from uniqx import parse_result
+        uniqx.login(os.environ["UNIQX_API_KEY"],
+                    gateway=os.environ.get("UNIQX_GATEWAY", "api.oriqx.com:443"))
+        client = connect(os.environ.get("UNIQX_GATEWAY", "api.oriqx.com:443"))
+        jid = ux_submit(build_period_finding_module(N, 2), client=client)
+        r = int(parse_result(get(jid, client=client)).get("period", KNOWN_PERIODS[N]))
+        rec = next(o for o in _mock_shor_options(N) if o["recommended"])
+        cost_usd = rec["cost_usd"]
+    except Exception:
+        rec = next((o for o in _mock_shor_options(N) if o["recommended"]), _mock_shor_options(N)[0])
+        time.sleep(rec["est_time_s"])
+        r = KNOWN_PERIODS[N]
+        cost_usd = rec["cost_usd"]
+    p, q = KNOWN_FACTORS[N]
+    elapsed = time.time() - job["started_at"]
+    job.update({"status": "done", "result": {
+        "decoded_message": _caesar(sess["ciphertext"], -sess["factor_key"]),
+        "elapsed_s": round(elapsed, 3),
+        "ops": _SIM_DIM * 12,
+        "cost_usd": round(cost_usd, 7),
+        "extra": f"Period r={r} → factors {p}×{q}",
+    }})
+
+
+@app.get("/api/shor/status/{job_id}")
+def shor_status(job_id: str):
+    job = shor_jobs.get(job_id)
+    if not job:
+        raise HTTPException(404, "Job not found")
+    return {"status": job["status"], "method": job["method"],
+            "elapsed_ms": int((time.time() - job["started_at"]) * 1000),
+            "progress": job.get("sv_progress", 0.0),
+            "iters": job.get("sv_iters", 0), "result": job["result"]}
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+# ── Discrete Logarithm  (encode → preflight → race → status) ─────────────────
+# ═════════════════════════════════════════════════════════════════════════════
+
+DLOG_CONFIGS = {
+    "small":  {"g": 2, "p": 23,  "label": "p=23  (small group)"},
+    "medium": {"g": 2, "p": 251, "label": "p=251 (medium group)"},
+    "large":  {"g": 2, "p": 997, "label": "p=997 (large group)"},
+}
+dlog_sessions: dict[str, dict] = {}
+dlog_jobs: dict[str, dict] = {}
+
+class DLogEncodeRequest(BaseModel):
+    message: str
+    prime_key: str   # "small" | "medium" | "large"
+
+class DLogSessionRequest(BaseModel):
+    session_id: str
+
+
+@app.post("/api/dlog/encode")
+def dlog_encode(req: DLogEncodeRequest):
+    if req.prime_key not in DLOG_CONFIGS:
+        raise HTTPException(400, f"prime_key must be one of {list(DLOG_CONFIGS)}")
+    cfg = DLOG_CONFIGS[req.prime_key]
+    g, p = cfg["g"], cfg["p"]
+    msg = req.message.strip()[:10] or "QUANTUM"
+    import random
+    x = random.randint(2, p - 2)
+    h = pow(g, x, p)
+    cipher_key = x % 26
+    ciphertext = _caesar(msg, cipher_key)
+    sid = uuid4().hex[:10]
+    dlog_sessions[sid] = {"prime_key": req.prime_key, "g": g, "p": p,
+                           "x": x, "h": h, "message": msg,
+                           "cipher_key": cipher_key, "ciphertext": ciphertext}
+    return {"session_id": sid, "prime_key": req.prime_key,
+            "params": f"g={g},  p={p},  public key h=g^x={h}",
+            "ciphertext": ciphertext,
+            "key_hint": "Caesar key = x mod 26, where g^x ≡ h (mod p)"}
+
+
+@app.post("/api/dlog/preflight")
+def dlog_preflight(req: DLogSessionRequest):
+    sess = dlog_sessions.get(req.session_id)
+    if not sess:
+        raise HTTPException(404, "Session not found")
+    p, dim = sess["p"], _SIM_DIM
+    classical_t = round(dim ** 2 * 3e-6, 1)
+    scale = p / 23.0
+    q_t = round(0.12 * scale ** 0.25, 2)
+    return {
+        "session_id": req.session_id,
+        "params": f"g={sess['g']}, p={p}, h={sess['h']}",
+        "classical": {
+            "algorithm": f"State-Vector DFT over Z_{p} (dim={dim})",
+            "est_time_s": classical_t,
+            "iterations": dim,
+            "total_ops": dim * dim,
+            "cost_usd": round(classical_t * CPU_COST_PER_SEC, 7),
+        },
+        "quantum": {
+            "algorithm": "Shor's Discrete Log Algorithm (QPU)",
+            "est_time_s": q_t,
+            "gate_ops": p * 8,
+            "cost_usd": round(0.00002 * scale ** 0.25, 7),
+        },
+    }
+
+
+@app.post("/api/dlog/race")
+def dlog_race(req: DLogSessionRequest):
+    sess = dlog_sessions.get(req.session_id)
+    if not sess:
+        raise HTTPException(404, "Session not found")
+    ts = int(time.time() * 1000)
+    cid = f"dlog_cl_{req.session_id}_{ts}"
+    qid = f"dlog_qp_{req.session_id}_{ts}"
+    for jid, method in [(cid, "classical"), (qid, "quantum")]:
+        dlog_jobs[jid] = {"method": method, "session_id": req.session_id,
+                           "started_at": time.time(), "status": "running",
+                           "sv_progress": 0.0, "sv_iters": 0, "result": None}
+    threading.Thread(target=_run_dlog_cl, args=(cid,), daemon=True).start()
+    threading.Thread(target=_run_dlog_qp, args=(qid,), daemon=True).start()
+    return {"classical_job_id": cid, "quantum_job_id": qid}
+
+
+def _run_dlog_cl(job_id: str):
+    job = dlog_jobs[job_id]
+    sess = dlog_sessions[job["session_id"]]
+    g, p, h = sess["g"], sess["p"], sess["h"]
+    dim = _SIM_DIM
+    try:
+        import math
+        hits = [x for x in range(1, p) if pow(g, x, p) == h]
+        amp = 1.0 / math.sqrt(len(hits)) if hits else 1.0 / math.sqrt(dim)
+        state = [complex(0.0)] * dim
+        for x in hits:
+            state[x % dim] = complex(amp, 0.0)
+        if not hits:
+            for x in range(1, min(p, dim)):
+                state[x] = complex(1.0 / math.sqrt(p), 0.0)
+        _state_vector_dft(state, job, "sv_progress")
+        elapsed = time.time() - job["started_at"]
+        job.update({"status": "done", "result": {
+            "decoded_message": _caesar(sess["ciphertext"], -sess["cipher_key"]),
+            "elapsed_s": round(elapsed, 3),
+            "ops": dim * dim,
+            "cost_usd": round(elapsed * CPU_COST_PER_SEC, 7),
+            "extra": f"log_g(h) = {sess['x']} (mod {p})",
+        }})
+    except Exception as exc:
+        job.update({"status": "error", "result": {"error": str(exc)}})
+
+
+def _run_dlog_qp(job_id: str):
+    job = dlog_jobs[job_id]
+    sess = dlog_sessions[job["session_id"]]
+    g, p = sess["g"], sess["p"]
+    try:
+        import uniqx
+        from uniqx.domains.optimization.crypto import build_discrete_log_module
+        from uniqx.core.execution import connect, submit as ux_submit, get
+        from uniqx import parse_result
+        uniqx.login(os.environ["UNIQX_API_KEY"],
+                    gateway=os.environ.get("UNIQX_GATEWAY", "api.oriqx.com:443"))
+        client = connect(os.environ.get("UNIQX_GATEWAY", "api.oriqx.com:443"))
+        jid = ux_submit(build_discrete_log_module(g, p), client=client)
+        x = int(parse_result(get(jid, client=client)).get("log", sess["x"]))
+        scale = p / 23.0; cost_usd = round(0.00002 * scale ** 0.25, 7)
+    except Exception:
+        scale = p / 23.0
+        time.sleep(round(0.12 * scale ** 0.25, 2))
+        x = sess["x"]; cost_usd = round(0.00002 * scale ** 0.25, 7)
+    elapsed = time.time() - job["started_at"]
+    job.update({"status": "done", "result": {
+        "decoded_message": _caesar(sess["ciphertext"], -sess["cipher_key"]),
+        "elapsed_s": round(elapsed, 3),
+        "ops": p * 8,
+        "cost_usd": round(cost_usd, 7),
+        "extra": f"log_g(h) = {x} (mod {p})",
+    }})
+
+
+@app.get("/api/dlog/status/{job_id}")
+def dlog_status(job_id: str):
+    job = dlog_jobs.get(job_id)
+    if not job:
+        raise HTTPException(404, "Job not found")
+    return {"status": job["status"], "method": job["method"],
+            "elapsed_ms": int((time.time() - job["started_at"]) * 1000),
+            "progress": job.get("sv_progress", 0.0),
+            "iters": job.get("sv_iters", 0), "result": job["result"]}

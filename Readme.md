@@ -24,3 +24,19 @@ git push origin dev
 git checkout main
 git merge dev
 git push origin main
+
+# launch app
+# Terminal 1 — backend
+cd hackathon_21-22_05_26/backend
+../venv/bin/uvicorn main:app --port 8000
+
+(if running already:
+lsof -ti :8000 | xargs kill -9
+)
+
+# Terminal 2 — frontend
+cd hackathon_21-22_05_26/pixel-perfect-clone-78177
+
+~/.bun/bin/bun run dev
+# → http://localhost:8080
+
